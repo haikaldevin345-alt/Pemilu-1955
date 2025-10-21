@@ -1,440 +1,297 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Pemilu 1955 — Tonggak Demokrasi Indonesia</title>
-<meta name="description" content="Materi lengkap Pemilu 1955 (latar, penyelenggara, proses, hasil, dampak, galeri, dan kuis) — single page interaktif.">
-<style>
-  /* ---------- Variables & Reset ---------- */
-  :root{
-    --bg:#f4efe6;        /* paper */
-    --panel:#fffef9;
-    --primary:#b22b2b;   /* deep red */
-    --accent:#f0a500;    /* warm gold */
-    --muted:#6d5f50;
-    --ink:#1f1b18;
-    --glass: rgba(255,255,255,0.6);
-    --shadow: 0 8px 30px rgba(11,11,11,0.08);
-    --maxw:1100px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family: "Source Sans Pro", "Segoe UI", Roboto, Arial, sans-serif;background: linear-gradient(180deg,var(--bg), #efe8d8);}
-  a{color:inherit}
-  img{max-width:100%;display:block}
-  /* ---------- Layout ---------- */
-  .container{max-width:var(--maxw);margin:32px auto;padding:16px}
-  header{
-    display:flex;gap:18px;align-items:center;justify-content:space-between;
-    background: linear-gradient(135deg,var(--primary), #7f1d1d);
-    color:#fff;padding:28px;border-radius:12px;box-shadow:var(--shadow);
-  }
-  .brand{display:flex;gap:14px;align-items:center}
-  .logo{
-    width:72px;height:72px;border-radius:8px;background:linear-gradient(180deg,#fff2e0,#ffe6c2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:800;font-size:18px;border:3px solid rgba(255,255,255,0.18)
-  }
-  header h1{margin:0;font-size:1.25rem;letter-spacing:0.6px}
-  header p{margin:0;font-size:0.9rem;opacity:0.95}
-  nav.toplinks{display:flex;gap:10px;align-items:center}
-  .btn{background:var(--panel);color:var(--ink);padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid rgba(0,0,0,0.06);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
-  /* ---------- Hero ---------- */
-  .hero{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:22px;align-items:start}
-  @media (max-width:980px){.hero{grid-template-columns:1fr}}
-  .panel{background:var(--panel);padding:20px;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
-  .lead{font-family:"Georgia",serif;color:var(--muted);font-size:0.98rem;margin:8px 0 0}
-  .hero-illustration{background:linear-gradient(180deg,#fff7ed,#fff2e6);padding:14px;border-radius:10px;text-align:center}
-  .hero-illustration img{border-radius:8px;box-shadow:0 8px 24px rgba(11,11,11,0.08)}
-  /* ---------- Navigation sticky section ---------- */
-  .sticky-nav{position:sticky;top:14px;padding:8px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .nav-chip{background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);font-weight:700;cursor:pointer}
-  .nav-chip.active{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
-  /* ---------- Two column content ---------- */
-  .content{display:grid;grid-template-columns:2fr 360px;gap:24px;margin-top:18px}
-  @media (max-width:980px){.content{grid-template-columns:1fr}}
-  main.article{min-height:200px}
-  aside.sidebar{position:relative}
-  /* ---------- Section styles ---------- */
-  section.story{margin-bottom:18px;padding:18px;border-radius:10px;background:linear-gradient(180deg,var(--panel),#fffdf8);border:1px solid rgba(0,0,0,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
-  h2.section-title{margin:0 0 10px;color:var(--primary);display:flex;align-items:center;gap:12px}
-  p.lead-text{margin:0 0 12px;color:var(--muted)}
-  ul.point{margin:8px 0 12px 18px}
-  ul.point li{margin:8px 0}
-  /* ---------- timeline ---------- */
-  .timeline{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-  .timeline button{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700}
-  .timeline button:hover{transform:translateY(-4px);transition:all .18s}
-  .timeline .active{background:var(--accent);color:#fff;border-color:transparent}
-  .timeline-detail{margin-top:12px;padding:12px;background:#fffbe6;border-left:4px solid var(--accent);border-radius:6px}
-  /* ---------- table ---------- */
-  table.stats{width:100%;border-collapse:collapse;margin-top:10px}
-  table.stats th, table.stats td{padding:10px;border-bottom:1px solid rgba(0,0,0,0.06);text-align:left}
-  table.stats th{background:linear-gradient(90deg,#fffdf6,#fff5e6);color:var(--primary)}
-  /* ---------- gallery ---------- */
-  .gallery{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
-  .gallery img{width:160px;height:110px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid rgba(0,0,0,0.04);box-shadow:0 8px 18px rgba(0,0,0,0.08)}
-  /* ---------- accordion ---------- */
-  details{background:#fff;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);margin:8px 0}
-  summary{font-weight:800;cursor:pointer}
-  /* ---------- quiz ---------- */
-  .quiz{padding:12px;border-radius:8px;background:#fffef9;border:1px solid rgba(0,0,0,0.04)}
-  .quiz .q{margin:12px 0}
-  .quiz button.check{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
-  /* ---------- sidebar cards ---------- */
-  .card-small{padding:14px;border-radius:8px;background:linear-gradient(180deg,#fff,#fffdf8);border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 18px rgba(0,0,0,0.04);margin-bottom:12px}
-  .kpi{display:flex;gap:12px;align-items:center}
-  .kpi .num{font-size:1.4rem;font-weight:800;color:var(--primary)}
-  .backtop{position:fixed;right:18px;bottom:18px;background:var(--primary);color:#fff;padding:10px 12px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,0.18);cursor:pointer;display:none}
-  /* ---------- modal ---------- */
-  #modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:9999}
-  #modal img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
-  /* ---------- small screens ---------- */
-  @media (max-width:560px){
-    header{flex-direction:column;align-items:flex-start;gap:10px}
-    .logo{width:56px;height:56px}
-    .hero-illustration{order:2}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pemilu 1955 — Tonggak Demokrasi Indonesia</title>
+  <meta name="description"
+    content="Materi lengkap Pemilu 1955 (latar, penyelenggara, proses, hasil, dampak, galeri, dan kuis) — single page interaktif.">
+  <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- HEADER -->
-  <header role="banner">
-    <div class="brand">
-      <div class="logo"><img src="WhatsApp Image 2024-10-14 at 12.44.51_21bb6c57.jpg" alt="logo"></div>
-      <div>
-        <h1>Pemilu 1955</h1>
-        <p>Mengenang Pemilihan Umum Pertama — Tonggak Demokrasi Indonesia</p>
+    <!-- HEADER -->
+    <header role="banner">
+      <div class="brand">
+        <div class="logo"><img src="WhatsApp Image 2024-10-14 at 12.44.51_21bb6c57.jpg" alt="logo"></div>
+        <div>
+          <h1>Pemilu 1955</h1>
+          <p>Mengenang Pemilihan Umum Pertama — Tonggak Demokrasi Indonesia</p>
+        </div>
       </div>
+      <nav class="toplinks" aria-label="Top links">
+        <a class="btn" href="#bg">Mulai</a>
+        <a class="btn ghost" href="#galeri">Galeri</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" aria-hidden="false">
+      <div class="panel">
+        <h2 class="section-title">Ikhtisar Singkat</h2>
+        <p class="lead-text">Pemilu 1955 diselenggarakan dalam dua tahap (29 Sep & 15 Des 1955) untuk memilih anggota
+          DPR dan Konstituante. Ini adalah pemilu pertama yang menunjukkan partisipasi rakyat sangat tinggi dan menjadi
+          dasar perubahan politik Indonesia selanjutnya.</p>
+
+        <div class="timeline" role="tablist" aria-label="Timeline singkat">
+          <button data-id="t1" class="active">Sebelum 1955</button>
+          <button data-id="t2">29 Sep 1955</button>
+          <button data-id="t3">15 Des 1955</button>
+          <button data-id="t4">Pasca 1955</button>
+        </div>
+        <div id="timelineContent" class="timeline-detail">
+          <strong>1945–1954:</strong> Periode perjuangan dan transisi ke pemerintahan sipil; persiapan administrasi
+          pemilu.
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="nav-chip" href="#proses">Proses</a>
+          <a class="nav-chip" href="#hasil">Hasil</a>
+          <a class="nav-chip" href="#dampak">Dampak</a>
+        </div>
+      </div>
+
+      <aside class="hero-illustration panel" aria-hidden="true">
+        <img src="pemilu pertama.jpeg" alt="Pemilih 1955">
+        <br>
+        <img src="kondisi pemilu.jpeg" alt="Pemilih 1955">
+        <p style="margin:10px 0 0;color:var(--muted);font-size:0.95rem;text-align:center">Suasana TPS Pemilu 1955 —
+          arsip foto</p>
+      </aside>
     </div>
-    <nav class="toplinks" aria-label="Top links">
-      <a class="btn" href="#bg">Mulai</a>
-      <a class="btn ghost" href="#galeri">Galeri</a>
-    </nav>
-  </header>
 
-  <!-- HERO -->
-  <div class="hero" aria-hidden="false">
-    <div class="panel">
-      <h2 class="section-title">Ikhtisar Singkat</h2>
-      <p class="lead-text">Pemilu 1955 diselenggarakan dalam dua tahap (29 Sep & 15 Des 1955) untuk memilih anggota DPR dan Konstituante. Ini adalah pemilu pertama yang menunjukkan partisipasi rakyat sangat tinggi dan menjadi dasar perubahan politik Indonesia selanjutnya.</p>
-
-      <div class="timeline" role="tablist" aria-label="Timeline singkat">
-        <button data-id="t1" class="active">Sebelum 1955</button>
-        <button data-id="t2">29 Sep 1955</button>
-        <button data-id="t3">15 Des 1955</button>
-        <button data-id="t4">Pasca 1955</button>
-      </div>
-      <div id="timelineContent" class="timeline-detail">
-        <strong>1945–1954:</strong> Periode perjuangan dan transisi ke pemerintahan sipil; persiapan administrasi pemilu.
-      </div>
-
-      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-        <a class="nav-chip" href="#proses">Proses</a>
-        <a class="nav-chip" href="#hasil">Hasil</a>
-        <a class="nav-chip" href="#dampak">Dampak</a>
-      </div>
+    <!-- STICKY NAV FOR SECTIONS -->
+    <div class="sticky-nav" role="navigation" aria-label="Section navigation" style="margin-top:18px">
+      <div class="nav-chip" data-target="#bg">Latar</div>
+      <div class="nav-chip" data-target="#proses">Proses</div>
+      <div class="nav-chip" data-target="#hasil">Hasil</div>
+      <div class="nav-chip" data-target="#dampak">Dampak</div>
+      <div class="nav-chip" data-target="#galeri">Galeri</div>
+      <div class="nav-chip" data-target="#kuis">Kuis</div>
     </div>
 
-    <aside class="hero-illustration panel" aria-hidden="true">
-      <img src="pemilu pertama.jpeg" alt="Pemilih 1955">
-      <br>
-      <img src="kondisi pemilu.jpeg" alt="Pemilih 1955">
-      <p style="margin:10px 0 0;color:var(--muted);font-size:0.95rem;text-align:center">Suasana TPS Pemilu 1955 — arsip foto</p>
-    </aside>
+    <!-- CONTENT + SIDEBAR -->
+    <div class="content" role="main">
+      <main class="article">
+
+        <!-- BACKGROUND -->
+        <section id="bg" class="story" data-scroll>
+          <h2 class="section-title">Latar Belakang — Mengapa Pemilu 1955 Terjadi?</h2>
+          <p class="lead-text">Setelah proklamasi kemerdekaan (1945) dan masa revolusi, Indonesia membutuhkan landasan
+            politik yang stabil. UUDS 1950 diterapkan sebagai dasar sementara, namun seringnya pergantian kabinet,
+            banyaknya partai politik, dan belum ada pemilihan umum nasional mendorong pemerintah mengadakan pemilu untuk
+            mewujudkan kedaulatan rakyat secara langsung.</p>
+
+          <details>
+            <summary>Siapa yang menginisiasi dan menyelenggarakan?</summary>
+            <p>Pemilu diinisiasi pada masa kabinet Ali Sastroamidjojo I (PNI). Penyelenggaraan dikoordinasikan oleh
+              Panitia Pemilihan Indonesia (PPI) dengan panitia daerah di setiap provinsi dan kabupaten. Tujuan utama:
+              memilih DPR dan Konstituante secara langsung, umum, bebas, dan rahasia.</p>
+          </details>
+        </section>
+
+        <!-- PROCESS -->
+        <section id="proses" class="story" data-scroll>
+          <h2 class="section-title">Proses & Pelaksanaan</h2>
+          <p class="lead-text">Pemilu 1955 dilaksanakan dalam dua tahap: 29 September 1955 untuk DPR dan 15 Desember
+            1955 untuk Konstituante. Sistem yang digunakan adalah perwakilan proporsional (16 distrik multi-anggota)
+            dengan metode quota Hare + largest remainder.</p>
+
+          <ul class="point">
+            <li>Jumlah kursi DPR: 257</li>
+            <li>Jumlah anggota Konstituante: 514</li>
+            <li>Partisipasi pemilih: ~91% (sekitar 39 juta terdaftar)</li>
+            <li>Banyak partai yang ikut — tetapi hanya beberapa partai besar mendominasi suara</li>
+          </ul>
+
+          <div style="margin-top:12px">
+            <img src="kotak suara.jpeg" alt="Kotak suara 1955" style="border-radius:8px">
+            <p class="muted" style="text-align:center;margin-top:8px">Kotak suara & surat suara saat Pemilu 1955</p>
+          </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="hasil" class="story" data-scroll>
+          <h2 class="section-title">Hasil Pemilu & Analisis Partai</h2>
+          <p class="lead-text">Empat partai besar yang memperoleh suara terbanyak: PNI, Masyumi, NU, dan PKI. Namun
+            tidak ada satu partai pun yang meraih mayoritas, sehingga pemerintahan menjadi rentan pada pergantian
+            kabinet dan kebuntuan politik.</p>
+
+          <table class="stats" aria-label="Hasil ringkas pemilu 1955">
+            <thead>
+              <tr>
+                <th>Partai</th>
+                <th>Kursi DPR</th>
+                <th>% Suara (perkiraan)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PNI</td>
+                <td>57</td>
+                <td>~22.3%</td>
+              </tr>
+              <tr>
+                <td>Masyumi</td>
+                <td>57</td>
+                <td>~20.9%</td>
+              </tr>
+              <tr>
+                <td>NU</td>
+                <td>45</td>
+                <td>~18.4%</td>
+              </tr>
+              <tr>
+                <td>PKI</td>
+                <td>39</td>
+                <td>~16.4%</td>
+              </tr>
+              <tr>
+                <td>Lainnya</td>
+                <td>59</td>
+                <td>~22%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <details>
+            <summary>Hasil Konstituante (singkat)</summary>
+            <p>Konstituante memilih 514 anggota. Perdebatan ideologis antara kelompok sekuler, muslim, dan kiri membuat
+              proses penyusunan UUD baru menjadi buntu.</p>
+          </details>
+        </section>
+
+        <!-- IMPACT -->
+        <section id="dampak" class="story" data-scroll>
+          <h2 class="section-title">Dampak & Apa yang Terjadi Setelahnya</h2>
+          <p class="lead-text">Walaupun pemilu berjalan dengan jujur dan antusias, kebuntuan politik di Konstituante dan
+            seringnya pergantian kabinet memberi jalan pada keputusan kuat pusat: pada 5 Juli 1959 Presiden Soekarno
+            mengeluarkan Dekrit Presiden yang membubarkan Konstituante dan menetapkan kembali UUD 1945 — menandai
+            dimulainya era Demokrasi Terpimpin.</p>
+
+          <ul class="point">
+            <li>Kebuntuan soal dasar negara (Pancasila vs negara berdasarkan syariat Islam)</li>
+            <li>Ketidakstabilan kabinet dan sulitnya kebijakan jangka panjang</li>
+            <li>Perubahan sistem politik dari parlementer ke presidensial yang lebih terpusat</li>
+          </ul>
+
+          <div class="fact card-small">
+            <strong>Fakta penting:</strong>
+            <p class="small muted">Pemilu 1955 sering disebut sebagai pemilu paling jujur dan partisipatif dalam sejarah
+              Republik Indonesia.</p>
+          </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="kuis" class="story" data-scroll>
+          <h2 class="section-title">Kuis Singkat (3 soal)</h2>
+          <div class="quiz">
+            <div class="q" data-correct="29 September 1955">
+              <p><strong>1.</strong> Kapan pemilihan anggota DPR pada Pemilu 1955 dilaksanakan?</p>
+              <label><input type="radio" name="q1" value="29 September 1955"> 29 September 1955</label><br>
+              <label><input type="radio" name="q1" value="15 Desember 1955"> 15 Desember 1955</label><br>
+              <label><input type="radio" name="q1" value="17 Agustus 1955"> 17 Agustus 1955</label>
+            </div>
+
+            <div class="q" data-correct="PNI">
+              <p><strong>2.</strong> Partai manakah yang memperoleh suara tertinggi pada Pemilu 1955?</p>
+              <label><input type="radio" name="q2" value="PNI"> PNI</label><br>
+              <label><input type="radio" name="q2" value="Masyumi"> Masyumi</label><br>
+              <label><input type="radio" name="q2" value="PKI"> PKI</label>
+            </div>
+
+            <div class="q" data-correct="Dekrit Presiden 5 Juli 1959">
+              <p><strong>3.</strong> Peristiwa penting apa yang terjadi karena kebuntuan Konstituante setelah Pemilu
+                1955?</p>
+              <label><input type="radio" name="q3" value="Dekrit Presiden 5 Juli 1959"> Dekrit Presiden 5 Juli
+                1959</label><br>
+              <label><input type="radio" name="q3" value="Proklamasi Kemerdekaan"> Proklamasi Kemerdekaan</label><br>
+              <label><input type="radio" name="q3" value="Pembentukan ORBA"> Pembentukan ORBA</label>
+            </div>
+
+            <button class="check" id="checkQuiz">Periksa Jawaban</button>
+            <div id="quizResult" style="margin-top:10px;font-weight:800"></div>
+          </div>
+        </section>
+
+        <!-- GALLERY (in-article) -->
+        <section id="galeri" class="story" data-scroll>
+          <h2 class="section-title">Galeri Arsip</h2>
+          <p class="lead-text">Klik untuk memperbesar foto-foto arsip Pemilu 1955.</p>
+          <div class="gallery" role="list">
+            <img src="soekarno.jpeg" alt="Soekarno"
+              data-large="https://upload.wikimedia.org/wikipedia/commons/8/89/Soekarno_1950.jpg" role="listitem">
+            <img src="mohammad hatta.jpeg" alt="Mohammad Hatta"
+              data-large="https://upload.wikimedia.org/wikipedia/commons/2/24/Mohammad_Hatta_1950.jpg" role="listitem">
+            <img src="kotak suara 2.jpeg" alt="Kotak suara 1955"
+              data-large="https://upload.wikimedia.org/wikipedia/commons/b/bb/Election_1955_ballot_box.jpg"
+              role="listitem">
+            <img src="pemilu.jpeg" alt="Pemilih 1955"
+              data-large="https://upload.wikimedia.org/wikipedia/commons/4/4f/Indonesian_voters_1955.jpg"
+              role="listitem">
+          </div>
+        </section>
+
+        <!-- SOURCES -->
+        <section id="sumber" class="story" data-scroll>
+          <h2 class="section-title">Sumber & Bacaan Lanjutan</h2>
+          <ul class="point">
+            <li>Wikipedia — "1955 Indonesian legislative election" & "1955 Indonesian Constitutional Assembly election".
+            </li>
+            <li>Britannica — History of Indonesia (post-independence overview).</li>
+            <li>Arsip Nasional Republik Indonesia / ANTARA — foto & dokumen arsip (untuk materi cetak, gunakan arsip
+              primer bila diperlukan).</li>
+            <li>Buku sejarah Indonesia (untuk tugas akademis, lampirkan kutipan buku sebagai sumber primer).</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="card-small">
+          <div class="kpi">
+            <div class="num">29 Sep & 15 Des</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Tanggal Pemilu 1955</div>
+              <div class="muted">DPR & Konstituante</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-small">
+          <strong>Partai unggulan</strong>
+          <p class="muted">PNI <img src="pni.png" alt="logo"> <br> Masyumi <br> <img src="masyumi.png" alt="logo"> <br>
+            NU <img src="nu.jpeg" alt="logo"> <br> PKI <br> <img src="pki.png" alt="logo"></p>
+        </div>
+
+        <div class="card-small">
+          <strong>Ringkasan singkat</strong>
+          <p class="muted">Pemilu pertama yang sangat partisif hasil menyebar → ketidakstabilan politik → Dekrit 1959.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <footer style="margin-top:26px;text-align:center;color:var(--muted)">
+      &copy; 2025 • dibuat oleh Haikal Devin Prayata — materi: Pemilu 1955 (latar, proses, hasil, dampak)
+    </footer>
+
   </div>
 
-  <!-- STICKY NAV FOR SECTIONS -->
-  <div class="sticky-nav" role="navigation" aria-label="Section navigation" style="margin-top:18px">
-    <div class="nav-chip" data-target="#bg">Latar</div>
-    <div class="nav-chip" data-target="#proses">Proses</div>
-    <div class="nav-chip" data-target="#hasil">Hasil</div>
-    <div class="nav-chip" data-target="#dampak">Dampak</div>
-    <div class="nav-chip" data-target="#galeri">Galeri</div>
-    <div class="nav-chip" data-target="#kuis">Kuis</div>
-  </div>
+  <!-- BACK TO TOP -->
+  <button id="backTop" class="backtop" title="Kembali ke atas">↑ Atas</button>
 
-  <!-- CONTENT + SIDEBAR -->
-  <div class="content" role="main">
-    <main class="article">
+  <!-- MODAL IMAGE -->
+  <div id="modal"><img src="" alt="Zoomed image"></div>
 
-      <!-- BACKGROUND -->
-      <section id="bg" class="story" data-scroll>
-        <h2 class="section-title">Latar Belakang — Mengapa Pemilu 1955 Terjadi?</h2>
-        <p class="lead-text">Setelah proklamasi kemerdekaan (1945) dan masa revolusi, Indonesia membutuhkan landasan politik yang stabil. UUDS 1950 diterapkan sebagai dasar sementara, namun seringnya pergantian kabinet, banyaknya partai politik, dan belum ada pemilihan umum nasional mendorong pemerintah mengadakan pemilu untuk mewujudkan kedaulatan rakyat secara langsung.</p>
+ <script src="script.js"></script>
 
-        <details>
-          <summary>Siapa yang menginisiasi dan menyelenggarakan?</summary>
-          <p>Pemilu diinisiasi pada masa kabinet Ali Sastroamidjojo I (PNI). Penyelenggaraan dikoordinasikan oleh Panitia Pemilihan Indonesia (PPI) dengan panitia daerah di setiap provinsi dan kabupaten. Tujuan utama: memilih DPR dan Konstituante secara langsung, umum, bebas, dan rahasia.</p>
-        </details>
-      </section>
-
-      <!-- PROCESS -->
-      <section id="proses" class="story" data-scroll>
-        <h2 class="section-title">Proses & Pelaksanaan</h2>
-        <p class="lead-text">Pemilu 1955 dilaksanakan dalam dua tahap: 29 September 1955 untuk DPR dan 15 Desember 1955 untuk Konstituante. Sistem yang digunakan adalah perwakilan proporsional (16 distrik multi-anggota) dengan metode quota Hare + largest remainder.</p>
-
-        <ul class="point">
-          <li>Jumlah kursi DPR: 257</li>
-          <li>Jumlah anggota Konstituante: 514</li>
-          <li>Partisipasi pemilih: ~91% (sekitar 39 juta terdaftar)</li>
-          <li>Banyak partai yang ikut — tetapi hanya beberapa partai besar mendominasi suara</li>
-        </ul>
-
-        <div style="margin-top:12px">
-          <img src="kotak suara.jpeg" alt="Kotak suara 1955" style="border-radius:8px">
-          <p class="muted" style="text-align:center;margin-top:8px">Kotak suara & surat suara saat Pemilu 1955</p>
-        </div>
-      </section>
-
-      <!-- RESULTS -->
-      <section id="hasil" class="story" data-scroll>
-        <h2 class="section-title">Hasil Pemilu & Analisis Partai</h2>
-        <p class="lead-text">Empat partai besar yang memperoleh suara terbanyak: PNI, Masyumi, NU, dan PKI. Namun tidak ada satu partai pun yang meraih mayoritas, sehingga pemerintahan menjadi rentan pada pergantian kabinet dan kebuntuan politik.</p>
-
-        <table class="stats" aria-label="Hasil ringkas pemilu 1955">
-          <thead><tr><th>Partai</th><th>Kursi DPR</th><th>% Suara (perkiraan)</th></tr></thead>
-          <tbody>
-            <tr><td>PNI</td><td>57</td><td>~22.3%</td></tr>
-            <tr><td>Masyumi</td><td>57</td><td>~20.9%</td></tr>
-            <tr><td>NU</td><td>45</td><td>~18.4%</td></tr>
-            <tr><td>PKI</td><td>39</td><td>~16.4%</td></tr>
-            <tr><td>Lainnya</td><td>59</td><td>~22%</td></tr>
-          </tbody>
-        </table>
-
-        <details>
-          <summary>Hasil Konstituante (singkat)</summary>
-          <p>Konstituante memilih 514 anggota. Perdebatan ideologis antara kelompok sekuler, muslim, dan kiri membuat proses penyusunan UUD baru menjadi buntu.</p>
-        </details>
-      </section>
-
-      <!-- IMPACT -->
-      <section id="dampak" class="story" data-scroll>
-        <h2 class="section-title">Dampak & Apa yang Terjadi Setelahnya</h2>
-        <p class="lead-text">Walaupun pemilu berjalan dengan jujur dan antusias, kebuntuan politik di Konstituante dan seringnya pergantian kabinet memberi jalan pada keputusan kuat pusat: pada 5 Juli 1959 Presiden Soekarno mengeluarkan Dekrit Presiden yang membubarkan Konstituante dan menetapkan kembali UUD 1945 — menandai dimulainya era Demokrasi Terpimpin.</p>
-
-        <ul class="point">
-          <li>Kebuntuan soal dasar negara (Pancasila vs negara berdasarkan syariat Islam)</li>
-          <li>Ketidakstabilan kabinet dan sulitnya kebijakan jangka panjang</li>
-          <li>Perubahan sistem politik dari parlementer ke presidensial yang lebih terpusat</li>
-        </ul>
-
-        <div class="fact card-small">
-          <strong>Fakta penting:</strong>
-          <p class="small muted">Pemilu 1955 sering disebut sebagai pemilu paling jujur dan partisipatif dalam sejarah Republik Indonesia.</p>
-        </div>
-      </section>
-
-      <!-- QUIZ -->
-      <section id="kuis" class="story" data-scroll>
-        <h2 class="section-title">Kuis Singkat (3 soal)</h2>
-        <div class="quiz">
-          <div class="q" data-correct="29 September 1955">
-            <p><strong>1.</strong> Kapan pemilihan anggota DPR pada Pemilu 1955 dilaksanakan?</p>
-            <label><input type="radio" name="q1" value="29 September 1955"> 29 September 1955</label><br>
-            <label><input type="radio" name="q1" value="15 Desember 1955"> 15 Desember 1955</label><br>
-            <label><input type="radio" name="q1" value="17 Agustus 1955"> 17 Agustus 1955</label>
-          </div>
-
-          <div class="q" data-correct="PNI">
-            <p><strong>2.</strong> Partai manakah yang memperoleh suara tertinggi pada Pemilu 1955?</p>
-            <label><input type="radio" name="q2" value="PNI"> PNI</label><br>
-            <label><input type="radio" name="q2" value="Masyumi"> Masyumi</label><br>
-            <label><input type="radio" name="q2" value="PKI"> PKI</label>
-          </div>
-
-          <div class="q" data-correct="Dekrit Presiden 5 Juli 1959">
-            <p><strong>3.</strong> Peristiwa penting apa yang terjadi karena kebuntuan Konstituante setelah Pemilu 1955?</p>
-            <label><input type="radio" name="q3" value="Dekrit Presiden 5 Juli 1959"> Dekrit Presiden 5 Juli 1959</label><br>
-            <label><input type="radio" name="q3" value="Proklamasi Kemerdekaan"> Proklamasi Kemerdekaan</label><br>
-            <label><input type="radio" name="q3" value="Pembentukan ORBA"> Pembentukan ORBA</label>
-          </div>
-
-          <button class="check" id="checkQuiz">Periksa Jawaban</button>
-          <div id="quizResult" style="margin-top:10px;font-weight:800"></div>
-        </div>
-      </section>
-
-      <!-- GALLERY (in-article) -->
-      <section id="galeri" class="story" data-scroll>
-        <h2 class="section-title">Galeri Arsip</h2>
-        <p class="lead-text">Klik untuk memperbesar foto-foto arsip Pemilu 1955.</p>
-        <div class="gallery" role="list">
-          <img src="soekarno.jpeg" alt="Soekarno" data-large="https://upload.wikimedia.org/wikipedia/commons/8/89/Soekarno_1950.jpg" role="listitem">
-          <img src="mohammad hatta.jpeg" alt="Mohammad Hatta" data-large="https://upload.wikimedia.org/wikipedia/commons/2/24/Mohammad_Hatta_1950.jpg" role="listitem">
-          <img src="kotak suara 2.jpeg" alt="Kotak suara 1955" data-large="https://upload.wikimedia.org/wikipedia/commons/b/bb/Election_1955_ballot_box.jpg" role="listitem">
-          <img src="pemilu.jpeg" alt="Pemilih 1955" data-large="https://upload.wikimedia.org/wikipedia/commons/4/4f/Indonesian_voters_1955.jpg" role="listitem">
-        </div>
-      </section>
-
-      <!-- SOURCES -->
-      <section id="sumber" class="story" data-scroll>
-        <h2 class="section-title">Sumber & Bacaan Lanjutan</h2>
-        <ul class="point">
-          <li>Wikipedia — "1955 Indonesian legislative election" & "1955 Indonesian Constitutional Assembly election".</li>
-          <li>Britannica — History of Indonesia (post-independence overview).</li>
-          <li>Arsip Nasional Republik Indonesia / ANTARA — foto & dokumen arsip (untuk materi cetak, gunakan arsip primer bila diperlukan).</li>
-          <li>Buku sejarah Indonesia (untuk tugas akademis, lampirkan kutipan buku sebagai sumber primer).</li>
-        </ul>
-      </section>
-
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="card-small">
-        <div class="kpi"><div class="num">29 Sep & 15 Des</div><div style="flex:1"><div style="font-weight:800">Tanggal Pemilu 1955</div><div class="muted">DPR & Konstituante</div></div></div>
-      </div>
-
-      <div class="card-small">
-        <strong>Partai unggulan</strong>
-        <p class="muted">PNI <img src="pni.png" alt="logo"> <br> Masyumi <br> <img src="masyumi.png" alt="logo"> <br> NU <img src="nu.jpeg" alt="logo"> <br> PKI <br> <img src="pki.png" alt="logo"></p>
-      </div>
-
-      <div class="card-small">
-        <strong>Ringkasan singkat</strong>
-        <p class="muted">Pemilu pertama yang sangat partisif hasil menyebar → ketidakstabilan politik → Dekrit 1959.</p>
-      </div>
-    </aside>
-  </div>
-
-  <footer style="margin-top:26px;text-align:center;color:var(--muted)">
-    &copy; 2025 • dibuat oleh Haikal Devin Prayata — materi: Pemilu 1955 (latar, proses, hasil, dampak)
-  </footer>
-
-</div>
-
-<!-- BACK TO TOP -->
-<button id="backTop" class="backtop" title="Kembali ke atas">↑ Atas</button>
-
-<!-- MODAL IMAGE -->
-<div id="modal"><img src="" alt="Zoomed image"></div>
-
-<script>
-  /* ---------- Utility: smooth scroll when clicking nav chips ---------- */
-  document.querySelectorAll('.nav-chip').forEach(chip=>{
-    chip.addEventListener('click', ()=> {
-      const t = document.querySelector(chip.dataset.target);
-      if(!t) return;
-      const top = t.getBoundingClientRect().top + window.scrollY - 12;
-      window.scrollTo({top, behavior:'smooth'});
-    });
-  });
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      e.preventDefault();
-      const t=document.querySelector(a.getAttribute('href'));
-      if(!t) return;
-      const top = t.getBoundingClientRect().top + window.scrollY - 12;
-      window.scrollTo({top, behavior:'smooth'});
-    });
-  });
-
-  /* ---------- Timeline interaction ---------- */
-  const timelineButtons = document.querySelectorAll('.timeline button');
-  const timelineContent = document.getElementById('timelineContent');
-  const timelineMap = {
-    t1: '<strong>1945–1954:</strong> Revolusi kemerdekaan, transisi pemerintahan, persiapan administrasi pemilu.',
-    t2: '<strong>29 Sep 1955:</strong> Pemilu legislatif untuk DPR — 257 kursi diperebutkan.',
-    t3: '<strong>15 Des 1955:</strong> Pemilu Konstituante — 514 anggota terpilih untuk menyusun UUD baru.',
-    t4: '<strong>Pasca-1955:</strong> Konstituante gagal mufakat → kebuntuan politik → Dekrit Presiden 5 Juli 1959.'
-  };
-  timelineButtons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      timelineButtons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      timelineContent.innerHTML = timelineMap[btn.dataset.id] || '';
-    });
-  });
-
-  /* ---------- Scroll spy / highlight nav chip ---------- */
-  const sections = document.querySelectorAll('main .story');
-  const navChips = document.querySelectorAll('.sticky-nav .nav-chip');
-  const spyObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        navChips.forEach(n => n.classList.toggle('active', n.dataset.target === '#' + entry.target.id));
-      }
-    });
-  }, {rootMargin:'-40% 0px -40% 0px'});
-  sections.forEach(s => spyObserver.observe(s));
-
-  /* ---------- Gallery modal zoom ---------- */
-  const modal = document.getElementById('modal');
-  const modalImg = modal.querySelector('img');
-  document.querySelectorAll('.gallery img').forEach(img=>{
-    img.addEventListener('click', ()=> {
-      modal.style.display = 'flex';
-      modalImg.src = img.dataset.large || img.src;
-      document.body.style.overflow='hidden';
-    });
-  });
-  modal.addEventListener('click', ()=> { modal.style.display='none'; document.body.style.overflow=''; });
-
-  /* ---------- Quiz logic ---------- */
-  document.getElementById('checkQuiz').addEventListener('click', ()=>{
-    const qs = document.querySelectorAll('.quiz .q');
-    let score=0;
-    qs.forEach((q, i)=>{
-      const correct = q.dataset.correct;
-      const chosen = q.querySelector('input[type=radio]:checked');
-      if(chosen && chosen.value === correct) score++;
-      // highlight answers
-      q.style.background = chosen ? (chosen.value === correct ? 'linear-gradient(90deg,#e6ffef,#f7fff9)' : 'linear-gradient(90deg,#fff6f6,#fff0f0)') : '';
-    });
-    const res = document.getElementById('quizResult');
-    res.textContent = `Skormu: ${score} dari ${qs.length} soal.`;
-    res.style.color = score === qs.length ? 'green' : (score>0 ? 'orange' : 'red');
-  });
-
-  /* ---------- Back to top ---------- */
-  const backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', ()=> {
-    backTop.style.display = window.scrollY > 400 ? 'block' : 'none';
-  });
-  backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-
-  /* ---------- Typewriter small title (visual polish) ---------- */
-  (function(){
-    const lead = document.querySelector('.leadline');
-    if(lead){
-      lead.style.width='0';
-      lead.style.display='inline-block';
-      lead.style.overflow='hidden';
-      lead.style.whiteSpace='nowrap';
-      lead.style.borderRight='2px solid rgba(0,0,0,0.15)';
-      lead.style.animation='type 2s steps(40,end)';
-      setTimeout(()=>lead.style.borderRight='0',2100);
-    }
-  })();
-
-  /* ---------- Accessibility: close modal with Esc ---------- */
-  window.addEventListener('keydown', e=> {
-    if(e.key === 'Escape') modal.style.display='none';
-  });
-
-  /* ---------- Scroll reveal for sections (simple) ---------- */
-  const revealObserver = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.style.transform='translateY(0)'; entry.target.style.opacity='1';
-      } else {
-        entry.target.style.transform='translateY(20px)'; entry.target.style.opacity='0.02';
-      }
-    });
-  }, {threshold: 0.12});
-  document.querySelectorAll('[data-scroll]').forEach(el=>{
-    el.style.transition='all 0.8s ease-out';
-    el.style.transform='translateY(20px)'; el.style.opacity='0.02';
-    revealObserver.observe(el);
-  });
-
-  /* ---------- finishing touch: color theme tweak (optional) ---------- */
-  // If you want to change accent colors quickly, edit :root at top of CSS.
-
-</script>
 </body>
+
 </html>
